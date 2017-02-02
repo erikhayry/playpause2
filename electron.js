@@ -32,6 +32,8 @@ app.on('ready', function onReady() {
         height: 600
     });
 
+    mainWindow.openDevTools();
+
     delete mainWindow.module;
 
     // If you want to open up dev tools programmatically, call

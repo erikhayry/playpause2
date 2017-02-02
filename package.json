@@ -102,6 +102,7 @@
     }
   },
   "dependencies": {
-    "@types/ember": "^2.7.36"
+    "@types/ember": "^2.7.36",
+    "@types/node": "^7.0.4"
   }
 }

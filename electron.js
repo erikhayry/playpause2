@@ -8,6 +8,9 @@ const BrowserWindow        = electron.BrowserWindow;
 const dirname              = __dirname || path.resolve(path.dirname());
 const emberAppLocation     = `file://${dirname}/dist/index.html`;
 
+const settings = require('./main/settings');
+const keybindings = require('./main/keybindings');
+
 let mainWindow = null;
 
 // Uncomment the lines below to enable Electron's crash reporter
@@ -27,11 +30,8 @@ app.on('window-all-closed', function onWindowAllClosed() {
 });
 
 app.on('ready', function onReady() {
-    mainWindow = new BrowserWindow({
-        width: 800,
-        height: 600
-    });
-
+    mainWindow = new BrowserWindow(settings.browserWindow);
+    new keybindings(mainWindow);
     mainWindow.openDevTools();
 
     delete mainWindow.module;

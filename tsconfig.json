@@ -19,6 +19,7 @@
   },
   "include": [
     "app/routes/*",
-    "config/*"
+    "config/*",
+    "main/*"
   ]
 }

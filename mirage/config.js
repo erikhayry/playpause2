@@ -28,6 +28,6 @@ export default function() {
 export default function() {
     this.namespace = '/api';
 
-    this.get('/users/:id')
-    this.get('/stations/:id')
+    this.get('/users/:id');
+    this.get('/stations/:id');
 }

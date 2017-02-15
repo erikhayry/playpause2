@@ -16,6 +16,7 @@
   },
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.5",
+    "broccoli-funnel": "^1.1.0",
     "devtron": "^1.4.0",
     "electron": "^1.4.15",
     "electron-packager": "^8.5.1",
@@ -106,6 +107,7 @@
   "dependencies": {
     "@types/electron": "^1.4.31",
     "@types/ember": "^2.7.36",
-    "@types/node": "^7.0.4"
+    "@types/node": "^7.0.4",
+    "electron-safe-ipc": "^0.6.1"
   }
 }

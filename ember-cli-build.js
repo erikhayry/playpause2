@@ -1,6 +1,7 @@
 /*jshint node:true*/
 /* global require, module */
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
+var Funnel = require('broccoli-funnel');
 
 module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
@@ -20,5 +21,16 @@ module.exports = function(defaults) {
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
 
-  return app.toTree();
+// Copy only the relevant files. For example the WOFF-files and stylesheets for a webfont:
+
+  var extraAssets = new Funnel('vendor/guest/lib', {
+    srcDir: '/',
+    include: ['**/*.js'],
+    destDir: '/assets/lib'
+  });
+
+  // Providing additional trees to the `toTree` method will result in those
+  // trees being merged in the final output.
+
+  return app.toTree(extraAssets);
 };

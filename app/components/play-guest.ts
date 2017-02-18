@@ -7,17 +7,22 @@ import Ember from 'ember';
 export default Ember.Component.extend({
     didInsertElement(){
         const {ipcRenderer} = require('electron')
-        console.log(ipcRenderer)
         let webview = this.element.getElementsByTagName('webview')[0];
-        webview.addEventListener('did-stop-loading', () => {
-            webview.openDevTools();
-        });
-        console.log(this.element.getElementsByTagName('webview')[0])
 
         ipcRenderer.on('playpause', (event:IpcRendererEvent) => {
             console.log('playpause')
             console.log(event)
-            webview.executeJavaScript('console.log("playpause")');
+            webview.send("playpause");
+        });
+
+        webview.addEventListener("dom-ready", () => {
+            webview.openDevTools();
+        });
+
+        webview.addEventListener('ipc-message', (event) => {
+            console.log(event);
+            console.info(event.channel);
+            console.info(event.args[0]);
         });
     }
 });

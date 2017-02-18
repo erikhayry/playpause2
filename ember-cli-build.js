@@ -5,7 +5,11 @@ var Funnel = require('broccoli-funnel');
 
 module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
-    // Add options here
+    minifyJS: {
+      options: {
+        exclude: ["assets/lib/**/*.js"]
+      }
+    }
   });
 
   // Use `app.import` to add additional libraries to the generated

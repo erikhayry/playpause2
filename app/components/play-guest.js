@@ -1,23 +1,20 @@
 import Ember from 'ember';
-import Guest from '../custom-objects/guest'
-
 export default Ember.Component.extend({
     didInsertElement() {
-        const { ipcRenderer } = requireNode('electron');
+        const { ipcRenderer } = require('electron');
         let webview = this.element.getElementsByTagName('webview')[0];
-
-        Guest.create({
-            webview: webview
-        });
-
-        webview.addEventListener('did-stop-loading', () => {
-            webview.openDevTools();
-        });
-        console.log(this.element.getElementsByTagName('webview')[0]);
         ipcRenderer.on('playpause', (event) => {
             console.log('playpause');
             console.log(event);
-            webview.executeJavaScript('console.log("playpause")');
+            webview.send("playpause");
+        });
+        webview.addEventListener("dom-ready", () => {
+            webview.openDevTools();
+        });
+        webview.addEventListener('ipc-message', (event) => {
+            console.log(event);
+            console.info(event.channel);
+            console.info(event.args[0]);
         });
     }
 });

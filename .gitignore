@@ -20,3 +20,4 @@ testem.log
 /app/routes/**/*.js
 /config/**/*.js
 /main/**/*.js
+.idea

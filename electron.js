@@ -10,6 +10,7 @@ const emberAppLocation     = `file://${dirname}/dist/index.html`;
 
 const settings = require('./main/settings');
 const keybindings = require('./main/keybindings');
+
 let mainWindow = null;
 
 // Uncomment the lines below to enable Electron's crash reporter

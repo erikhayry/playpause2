@@ -1,5 +1,32 @@
-import DS from 'ember-data';
+import { Adapter } from 'ember-pouch';
+import PouchDB from 'pouchdb';
+import config from 'play-pause/config/environment';
+import Ember from 'ember';
 
-export default DS.JSONAPIAdapter.extend({
-    //namespace: 'api'
+const { assert, isEmpty } = Ember;
+
+function createDb() {
+  let localDb = 'local';
+
+  assert('emberPouch.localDb must be set', !isEmpty(localDb));
+
+  let db = new PouchDB(localDb);
+
+  if (config.emberPouch && config.emberPouch.remoteDb) {
+    let remoteDb = new PouchDB(config.emberPouch.remoteDb);
+
+    db.sync(remoteDb, {
+      live: true,
+      retry: true
+    });
+  }
+
+  return db;
+}
+
+export default Adapter.extend({
+  init() {
+    this._super(...arguments);
+    this.set('db', createDb());
+  }
 });

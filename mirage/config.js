@@ -30,4 +30,6 @@ export default function() {
 
     this.get('/users/:id');
     this.get('/stations/:id');
+
+    this.post('/users');
 }

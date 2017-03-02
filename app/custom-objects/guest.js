@@ -1,8 +1,6 @@
 import Ember from 'ember';
 
-
-const {ipcMain} = require('electron')
-const path = requireNode('path');
+//const path = requireNode('path');
 const fs = requireNode('fs');
 
 export default Ember.Object.extend({
@@ -22,7 +20,7 @@ export default Ember.Object.extend({
         });
 
 // Process the data from the webview
-        webview.addEventListener('ipc-message',function(event){
+        webview.addEventListener('ipc-message', function(event){
             console.log(event);
             console.info(event.channel);
         });

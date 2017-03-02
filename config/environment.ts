@@ -8,6 +8,9 @@ module.exports = (environment) => {
     modulePrefix: 'play-pause',
     environment: environment,
     rootURL: null,
+    emberPouch: {
+      localDb: 'playpause-local'
+    },
     locationType: process.env.EMBER_CLI_ELECTRON ? 'hash' : 'auto',
     EmberENV: {
       FEATURES: {

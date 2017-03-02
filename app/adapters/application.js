@@ -6,13 +6,13 @@ import Ember from 'ember';
 const { assert, isEmpty } = Ember;
 
 function createDb() {
-  let localDb = 'local';
+  let localDb = config.emberPouch.localDb;
 
   assert('emberPouch.localDb must be set', !isEmpty(localDb));
 
   let db = new PouchDB(localDb);
 
-  if (config.emberPouch && config.emberPouch.remoteDb) {
+  if (config.emberPouch.remoteDb) {
     let remoteDb = new PouchDB(config.emberPouch.remoteDb);
 
     db.sync(remoteDb, {

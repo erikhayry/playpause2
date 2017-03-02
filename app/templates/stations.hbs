@@ -1,0 +1,12 @@
+<ul>
+    {{#each model as |station|}}
+        <li>
+            {{#link-to "station" station.id}}{{station.name}}{{/link-to}} <br>
+            <button {{action "removeStation" station.id}}>Remove</button>
+        </li>
+    {{/each}}
+</ul>
+<hr>
+{{input value=newStationName placeholder="Name"}}
+{{input value=newStationUrl placeholder="url"}}
+<button {{action "addStation" newStationName newStationUrl}}>Add station</button>

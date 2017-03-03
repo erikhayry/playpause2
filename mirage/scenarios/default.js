@@ -7,7 +7,5 @@ export default function(server) {
     Make sure to define a factory for each model you want to create.
   */
 
-    server.createList('user', 1, {
-        stations: server.createList('station', 5)
-    });
+    server.createList('station', 10);
 }

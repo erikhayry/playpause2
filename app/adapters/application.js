@@ -28,5 +28,12 @@ export default Adapter.extend({
   init() {
     this._super(...arguments);
     this.set('db', createDb());
+
   }
 });
+
+/*
+import DS from 'ember-data';
+
+export default DS.JSONAPIAdapter.extend({});
+*/

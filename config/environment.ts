@@ -5,6 +5,7 @@
 
 module.exports = (environment) => {
   let ENV:any = {
+    mockackend: 'mock',
     modulePrefix: 'play-pause',
     environment: environment,
     rootURL: null,
@@ -43,6 +44,10 @@ module.exports = (environment) => {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
+
+    ENV['ember-cli-mirage'] = {
+      enabled: true
+    };
   }
 
   if (environment === 'production') {

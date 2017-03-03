@@ -28,8 +28,8 @@ export default function() {
 export default function() {
     //this.namespace = '/api';
 
-    this.get('/users/:id');
-    this.get('/stations/:id');
+    this.get('/station/:id');
+    this.del('/stations/:id');
+    this.get('/stations');
 
-    this.post('/users');
 }

@@ -3,6 +3,7 @@
 /* jshint node: true */
 module.exports = (environment) => {
     let ENV = {
+        mockackend: 'mock',
         modulePrefix: 'play-pause',
         environment: environment,
         rootURL: null,
@@ -24,6 +25,9 @@ module.exports = (environment) => {
         ENV.APP.LOG_ACTIVE_GENERATION = false;
         ENV.APP.LOG_VIEW_LOOKUPS = false;
         ENV.APP.rootElement = '#ember-testing';
+        ENV['ember-cli-mirage'] = {
+            enabled: true
+        };
     }
     if (environment === 'production') {
     }

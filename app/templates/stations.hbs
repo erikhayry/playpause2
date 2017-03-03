@@ -1,4 +1,4 @@
-<ul>
+<ul class="stations">
     {{#each model as |station|}}
         <li>
             {{#link-to "station" station.id}}{{station.name}}{{/link-to}} <br>
@@ -7,6 +7,6 @@
     {{/each}}
 </ul>
 <hr>
-{{input value=newStationName placeholder="Name"}}
-{{input value=newStationUrl placeholder="url"}}
-<button {{action "addStation" newStationName newStationUrl}}>Add station</button>
+{{input value=newStationName placeholder="Name" class="name"}}
+{{input value=newStationUrl placeholder="url" class="url"}}
+<button {{action "addStation" newStationName newStationUrl}} class="submit">Add station</button>

@@ -2,12 +2,10 @@ import Model from 'ember-pouch/model';
 import DS from 'ember-data';
 
 const {
-  attr,
-  hasMany,
-  belongsTo
+  attr
 } = DS;
 
 export default Model.extend({
-    name: DS.attr('string'),
-    url: DS.attr('string')
+    name: attr('string'),
+    url: attr('string')
 });

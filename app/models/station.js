@@ -7,5 +7,6 @@ const {
 
 export default Model.extend({
     name: attr('string'),
-    url: attr('string')
+    url: attr('string'),
+    selector: attr('string')
 });

@@ -1,7 +1,8 @@
 const {ipcRenderer} = require('electron');
 
-ipcRenderer.on('playpause', function(){
-    let playBtnEl = document.getElementsByClassName('player-play')[0];
+ipcRenderer.on('playpause', function(event, args){
+    console.log('playpause', event, args)
+    let playBtnEl = document.querySelectorAll(args)[0];
     if(playBtnEl){
         playBtnEl.click()
         console.log('playpaused')

@@ -9,4 +9,5 @@
 <hr>
 {{input value=newStationName placeholder="Name" class="name"}}
 {{input value=newStationUrl placeholder="url" class="url"}}
-<button {{action "addStation" newStationName newStationUrl}} class="submit">Add station</button>
+{{input value=newStationSelector placeholder="selector" class="selector"}}
+<button {{action "addStation" newStationName newStationUrl newStationSelector}} class="submit">Add station</button>

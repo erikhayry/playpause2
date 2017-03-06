@@ -6,7 +6,7 @@ export default Ember.Component.extend({
         ipcRenderer.on('playpause', (event) => {
             console.log('playpause');
             console.log(event);
-            webview.send("playpause");
+            webview.send("playpause", this.get('guest-selector'));
         });
         webview.addEventListener("dom-ready", () => {
             webview.openDevTools();

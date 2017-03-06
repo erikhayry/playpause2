@@ -6,10 +6,11 @@ export default Ember.Route.extend({
     },
 
     actions: {
-        addStation: function(name, url) {
+        addStation: function(name, url, selector) {
             let station = this.store.createRecord('station', {
                 name: name,
-                url: url
+                url: url,
+                selector: selector
             });
             station.save();
         },

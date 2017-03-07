@@ -1,8 +1,17 @@
-<h1>
-    {{model.name}}
-</h1>
-{{play-guest guest-url=model.url guest-selector=model.selector}}
-
-{{#link-to "stations"}}
-    Back
-{{/link-to}}
+<div class="row">
+    <div class="col">
+        <h2 class="text-center">{{model.name}}</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        {{play-guest guest-url=model.url guest-selector=model.selector class="text-center"}}
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        {{#link-to "stations" class="btn btn-secondary"}}
+            Back
+        {{/link-to}}
+    </div>
+</div>

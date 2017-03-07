@@ -111,6 +111,7 @@
     "@types/electron": "^1.4.31",
     "@types/ember": "^2.7.36",
     "@types/node": "^7.0.4",
-    "electron-safe-ipc": "^0.6.1"
+    "electron-safe-ipc": "^0.6.1",
+    "ember-cli-sass": "^6.1.1"
   }
 }

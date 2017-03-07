@@ -9,6 +9,11 @@ module.exports = function(defaults) {
       options: {
         exclude: ["assets/lib/**/*.js"]
       }
+    },
+    sassOptions: {
+      includePaths: [
+        'bower_components/bootstrap/scss'
+      ]
     }
   });
 

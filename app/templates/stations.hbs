@@ -1,13 +1,22 @@
-<ul class="stations">
+<form class="form-inline">
+    {{input class="form-control" value=newStationName placeholder="Name"}}
+    {{input class="form-control" value=newStationUrl placeholder="url"}}
+    {{input class="form-control" value=newStationSelector placeholder="selector"}}
+    <button class="btn btn-primary" {{action "addStation" newStationName newStationUrl newStationSelector}}>Add station</button>
+</form>
+
+<br>
+
+<ul class="list-group">
     {{#each model as |station|}}
-        <li>
-            {{#link-to "station" station.id}}{{station.name}}{{/link-to}} <br>
-            <button {{action "removeStation" station.id}}>Remove</button>
+        <li class="list-group-item">
+            <div class="d-flex w-100 justify-content-between">
+                {{#link-to "station" station.id}}{{station.name}}{{/link-to}}
+                <button class="btn btn-danger" {{action "removeStation" station.id}}>Remove</button>
+            </div>
         </li>
     {{/each}}
 </ul>
-<hr>
-{{input value=newStationName placeholder="Name" class="name"}}
-{{input value=newStationUrl placeholder="url" class="url"}}
-{{input value=newStationSelector placeholder="selector" class="selector"}}
-<button {{action "addStation" newStationName newStationUrl newStationSelector}} class="submit">Add station</button>
+
+
+

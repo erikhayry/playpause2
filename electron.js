@@ -32,7 +32,9 @@ app.on('window-all-closed', function onWindowAllClosed() {
 app.on('ready', function onReady() {
     mainWindow = new BrowserWindow(settings.browserWindow);
     new keybindings(mainWindow);
-    mainWindow.openDevTools();
+    if(process.env.EMBER_ENV === 'development'){
+        mainWindow.openDevTools();
+    }
 
     delete mainWindow.module;
 

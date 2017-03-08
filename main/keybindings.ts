@@ -1,4 +1,4 @@
-/// <reference path="../node_modules/@types/electron/index.d.ts" />
+  /// <reference path="../node_modules/@types/electron/index.d.ts" />
 "use strict";
 const {globalShortcut} = require('electron')
 

@@ -18,7 +18,6 @@ testem.log
 
 # ts
 #/app/routes/**/*.js
-/config/**/*.js
 /main/**/*.js
 .idea
 /electron-builds

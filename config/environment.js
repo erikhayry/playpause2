@@ -1,5 +1,3 @@
-/// <reference path="../node_modules/@types/node/index.d.ts" />
-/// <reference path="../node_modules/@types/ember/index.d.ts" />
 /* jshint node: true */
 module.exports = (environment) => {
     let ENV = {

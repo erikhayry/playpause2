@@ -1,9 +1,20 @@
-<form class="form-inline">
-    {{input class="form-control" value=newStationName placeholder="Name"}}
-    {{input class="form-control" value=newStationUrl placeholder="url"}}
-    {{input class="form-control" value=newStationSelector placeholder="selector"}}
-    <button class="btn btn-primary" {{action "addStation" newStationName newStationUrl newStationSelector}}>Add station</button>
-</form>
+<div class="row">
+    <div class="col-sm-8">
+        <form class="form-inline">
+            {{input class="form-control" value=newStationName placeholder="Name"}}
+            {{input class="form-control" value=newStationUrl placeholder="url"}}
+            {{input class="form-control" value=newStationSelector placeholder="selector"}}
+            <button class="btn btn-primary" {{action "addStation" newStationName newStationUrl newStationSelector}}>Add station</button>
+        </form>
+    </div>
+    <div class="col-sm-4">
+        <div class="text-center">
+            {{#link-to "add-station" class="btn btn-primary"}}
+                Add Station by browsing
+            {{/link-to}}
+        </div>
+    </div>
+</div>
 
 <br>
 

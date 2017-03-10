@@ -13,3 +13,9 @@ ipcRenderer.on('playpause', function(event, args){
         ipcRenderer.sendToHost('playpausedfailed');
     }
 });
+
+ipcRenderer.on('findCandidates', function(event, args){
+    console.log('findCandidates', event, args)
+    console.log(document.querySelectorAll('audio'))
+    ipcRenderer.sendToHost('candidatesFound', document.querySelectorAll('audio').length);
+});

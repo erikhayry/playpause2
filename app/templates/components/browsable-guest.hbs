@@ -1,0 +1,40 @@
+{{#if info}}
+    <div class="alert alert-info" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close" {{action "closeAlert"}}>
+            <span aria-hidden="true">&times;</span>
+        </button>
+        {{info}}
+    </div>
+{{/if}}
+
+
+<div class="row">
+    <div class="col-8">
+        <div class="text-left">
+            {{input class="form-control" value=browserUrl placeholder="url"}}
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="text-left">
+            <button class="btn btn-primary" {{action "loadUrl" browserUrl}}>Go</button>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<webview
+        id="webview-guest"
+        src="{{guestUrl}}"
+        style="display:inline-flex; width:640px; height:480px"
+        preload="./assets/lib/click.js"
+>
+</webview>
+
+<br>
+
+<div class="row">
+    <div class="col">
+        <button class="btn btn-primary" {{action "findCandidates" guestUrl}} disabled={{isLoading}}>Find Play Button</button>
+    </div>
+</div>

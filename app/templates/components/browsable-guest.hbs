@@ -1,6 +1,15 @@
+{{#if error}}
+    <div class="alert alert-idanger" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close" {{action "closeAlert" 'error'}}>
+            <span aria-hidden="true">&times;</span>
+        </button>
+        {{error}}
+    </div>
+{{/if}}
+
 {{#if info}}
     <div class="alert alert-info" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close" {{action "closeAlert"}}>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close" {{action "closeAlert" 'info'}}>
             <span aria-hidden="true">&times;</span>
         </button>
         {{info}}
@@ -27,7 +36,7 @@
         id="webview-guest"
         src="{{guestUrl}}"
         style="display:inline-flex; width:640px; height:480px"
-        preload="./assets/lib/click.js"
+        preload="./assets/lib/guest.js"
 >
 </webview>
 
@@ -38,3 +47,12 @@
         <button class="btn btn-primary" {{action "findCandidates" guestUrl}} disabled={{isLoading}}>Find Play Button</button>
     </div>
 </div>
+
+{{#if candidate}}
+    <h2>Audio element found</h2>
+    <p>Try it</p>
+    {{#if playpaused}}
+        <button class="btn btn-primary" {{action "saveCandidate" candidate}}>Save</button>
+        <button class="btn btn-primary" {{action "tryAnotherCandidate"}} >Try another</button>
+    {{/if}}
+{{/if}}

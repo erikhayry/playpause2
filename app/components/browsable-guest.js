@@ -5,8 +5,16 @@ export default Ember.Component.extend({
     isLoading: true,
     browserUrl: 'http://sr.se',
     didInsertElement() {
+        const { ipcRenderer } = require('electron');
+
         let webview = this.set('webview', this.element.getElementsByTagName('webview')[0]);
 
+        ipcRenderer.on('playpause', () => {
+            let candidate = this.get('candidate');
+            if(candidate){
+                webview.send("playpause", '#' + candidate.id);
+            }
+        });
 
         webview.addEventListener("dom-ready", () => {
             if(config.environment === 'development'){
@@ -17,9 +25,25 @@ export default Ember.Component.extend({
         webview.addEventListener('ipc-message', (event) => {
             console.log('ipc-message', event)
             switch (event.channel) {
+                case 'playpausedfailed':
+                    this.set('error', 'Unable to find element with selector ' + '#' + this.get('candidate').id);
+                    break;
+                case 'playpaused':
+                    this.set('playpaused', true)
+                    break;
                 case 'candidatesFound':
-                    this.sendAction('onCandidatesFound', event.args[0])
-                    this.set('info', 'Found ' + event.args[0]  + ' candidates');
+                    let candidates = event.args[0];
+                    this.sendAction('onCandidatesFound', candidates)
+                    if(!candidates || candidates.length === 0){
+                        this.set('error', 'No candidates found');
+                    }
+                    else{
+                        this.set('info', 'Found ' + candidates.length  + ' candidates');
+                        if(candidates.length > 1){
+                            this.set('candidates', candidates)
+                        }
+                        this.set('candidate', candidates[0])
+                    }
                     break;
             }
         });
@@ -30,6 +54,14 @@ export default Ember.Component.extend({
 
         webview.addEventListener('did-navigate', (event) => {
             console.log('did-navigate', event)
+        });
+
+        webview.addEventListener('media-paused', (event) => {
+            console.log('media-paused', event)
+        });
+
+        webview.addEventListener('media-started-playing', (event) => {
+            console.log('media-started-playing', event)
         });
 
         webview.addEventListener('did-navigate-in-page', (event) => {
@@ -49,8 +81,15 @@ export default Ember.Component.extend({
             console.log('findCandidates', url)
             this.get('webview').send("findCandidates", url);
         },
-        closeAlert: function () {
-            this.set('info', '');
+        closeAlert: function (alertName) {
+            this.set(alertName, '');
+        },
+        saveCandidate: function(candidate){
+            console.log('saveCandidate', candidate)
+        },
+        tryAnotherCandidate: function(){
+            console.log('tryAnotherCandidate')
+            this.set('candidate', this.get('candidates')[1])
         }
     }
 });

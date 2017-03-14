@@ -9,8 +9,19 @@ export default Ember.Controller.extend({
             this.set('currentUrl', 'test')
             this.set('isLoading', false)
         },
-        onCandidatesFound: function(candidates){
-            console.log('onCandidatesFound', candidates)
+        saveCandidate: function(name, url, id, className, type) {
+            let store = this.get('store');
+
+            console.log('saveCandidate', name, url, className, type);
+            let station = this.store.createRecord('station', {
+                name: name,
+                url: url,
+                id: id,
+                className: className,
+                type: type
+            });
+            station.save();
+            this.transitionToRoute('stations');
         }
     }
 });

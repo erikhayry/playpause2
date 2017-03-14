@@ -56,14 +56,6 @@ export default Ember.Component.extend({
             console.log('did-navigate', event)
         });
 
-        webview.addEventListener('media-paused', (event) => {
-            console.log('media-paused', event)
-        });
-
-        webview.addEventListener('media-started-playing', (event) => {
-            console.log('media-started-playing', event)
-        });
-
         webview.addEventListener('did-navigate-in-page', (event) => {
             console.log('did-navigate-in-page', event)
             this.set('browserUrl', event.url);
@@ -78,18 +70,14 @@ export default Ember.Component.extend({
             this.set('guestUrl', url);
         },
         findCandidates: function(url){
-            console.log('findCandidates', url)
+            console.log('findCandidates', url);
             this.get('webview').send("findCandidates", url);
         },
         closeAlert: function (alertName) {
             this.set(alertName, '');
         },
-        saveCandidate: function(candidate){
-            console.log('saveCandidate', candidate)
-        },
-        tryAnotherCandidate: function(){
-            console.log('tryAnotherCandidate')
-            this.set('candidate', this.get('candidates')[1])
+        saveCandidate: function(name, url, id, className, type) {
+            this.sendAction('saveCandidate', name, url, id, className, type)
         }
     }
 });

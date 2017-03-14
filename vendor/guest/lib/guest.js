@@ -1,12 +1,14 @@
 const {ipcRenderer} = require('electron');
 
 
-function getCandidates(){
+function getCandidates(url){
     let elements = document.querySelectorAll('audio');
     let candidates = [];
 
     [].forEach.call(elements, (el) => {
         candidates.push({
+            name: document.title,
+            url: url,
             type: el.tagName,
             id: el.id,
             className: el.className
@@ -18,9 +20,9 @@ function getCandidates(){
 
 
 
-ipcRenderer.on('playpause', function(event, args){
-    console.log('playpause', event, args)
-    let playPauseEl = document.querySelectorAll(args)[0];
+ipcRenderer.on('playpause', function(event, selector){
+    console.log('playpause', event, selector)
+    let playPauseEl = document.querySelectorAll(selector)[0];
     if(playPauseEl){
         if(playPauseEl.tagName === 'AUDIO'){
             console.log('Audio', playPauseEl)
@@ -43,7 +45,7 @@ ipcRenderer.on('playpause', function(event, args){
     }
 });
 
-ipcRenderer.on('findCandidates', function(event, args){
-    console.log('findCandidates', event, args)
-    ipcRenderer.sendToHost('candidatesFound', getCandidates());
+ipcRenderer.on('findCandidates', function(event, url){
+    console.log('findCandidates', event, url)
+    ipcRenderer.sendToHost('candidatesFound', getCandidates(url));
 });

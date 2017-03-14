@@ -3,8 +3,10 @@
         <form class="form-inline">
             {{input class="form-control" value=newStationName placeholder="Name"}}
             {{input class="form-control" value=newStationUrl placeholder="url"}}
-            {{input class="form-control" value=newStationSelector placeholder="selector"}}
-            <button class="btn btn-primary" {{action "addStation" newStationName newStationUrl newStationSelector}}>Add station</button>
+            {{input class="form-control" value=newStationId placeholder="id"}}
+            {{input class="form-control" value=newStationclassName placeholder="className"}}
+            {{input class="form-control" value=newStationType placeholder="type"}}
+            <button class="btn btn-primary" {{action "addStation" newStationName newStationUrl newStationId newStationclassName newStationType}}>Add station</button>
         </form>
     </div>
     <div class="col-sm-4">

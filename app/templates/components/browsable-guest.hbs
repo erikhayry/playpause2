@@ -48,11 +48,6 @@
     </div>
 </div>
 
-{{#if candidate}}
-    <h2>Audio element found</h2>
-    <p>Try it</p>
-    {{#if playpaused}}
-        <button class="btn btn-primary" {{action "saveCandidate" candidate}}>Save</button>
-        <button class="btn btn-primary" {{action "tryAnotherCandidate"}} >Try another</button>
-    {{/if}}
-{{/if}}
+<br>
+
+{{add-station-dialog candidates=candidates candidate=candidate saveCandidate="saveCandidate"}}

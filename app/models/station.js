@@ -8,5 +8,7 @@ const {
 export default Model.extend({
     name: attr('string'),
     url: attr('string'),
-    selector: attr('string')
+    id: attr('string'),
+    className: attr('string'),
+    type: attr('string')
 });

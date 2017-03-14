@@ -10,7 +10,9 @@ export default Ember.Route.extend({
                 let station = store.createRecord('station', {
                     name: 'SR.se',
                     url: 'http://sr.se',
-                    selector: '.player-play'
+                    id: undefined,
+                    className: 'player-play',
+                    type: 'BUTTON'
                 });
                 station.save();
             }
@@ -19,11 +21,13 @@ export default Ember.Route.extend({
     },
 
     actions: {
-        addStation: function(name, url, selector) {
+        addStation: function(name, url, id, className, type) {
             let station = this.store.createRecord('station', {
                 name: name,
                 url: url,
-                selector: selector
+                id: id,
+                className: className,
+                type: type
             });
             station.save();
         },

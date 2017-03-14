@@ -1,0 +1,13 @@
+{{#if candidate}}
+    <h2>Audio element found</h2>
+    <p>Try it using your media buttons</p>
+
+    <p>Did it work as expected?</p>
+    <button class="btn btn-primary" {{action "saveCandidate" candidate}}>Yes, save station</button>
+    {{#if nextCandidate}}
+        <button class="btn btn-primary" {{action "tryAnotherCandidate"}}>No Try another</button>
+    {{else}}
+        <p>No more elements found. Save station as mutable</p>
+        <button class="btn btn-primary" {{action "saveCandidate" candidate}}>Save station as mutable</button>
+    {{/if}}
+{{/if}}

@@ -20,8 +20,14 @@ function getCandidates(url){
 
 
 
-ipcRenderer.on('playpause', function(event, selector){
-    console.log('playpause', event, selector)
+ipcRenderer.on('playpause', function(event, idName, className){
+    console.log('playpause', event, idName, className)
+
+    let selector = '';
+    if(idName || className){
+        selector = idName ? '#' + idName : '.' + className.join(' ').split('.');
+    }
+
     let playPauseEl = document.querySelectorAll(selector)[0];
     if(playPauseEl){
         if(playPauseEl.tagName === 'AUDIO'){

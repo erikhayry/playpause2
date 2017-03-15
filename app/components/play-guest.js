@@ -5,8 +5,11 @@ export default Ember.Component.extend({
     didInsertElement() {
         const { ipcRenderer } = require('electron');
         let webview = this.element.getElementsByTagName('webview')[0];
+
         ipcRenderer.on('playpause', () => {
-            webview.send("playpause", this.get('guest-selector'));
+            console.log(this.get('stationIdName'))
+            console.log(this.get('stationClassName'))
+            webview.send("playpause", this.get('stationIdName'), this.get('stationClassName'));
         });
         webview.addEventListener("dom-ready", () => {
             if(config.environment === 'development'){
@@ -16,7 +19,7 @@ export default Ember.Component.extend({
         webview.addEventListener('ipc-message', (event) => {
             switch (event.channel) {
                 case 'playpausedfailed':
-                    this.set('error', 'Unable to find element with selector ' + this.get('guest-selector'));
+                    this.set('error', 'Unable to find element with selector ' + this.get('stationIdName') + ' / ' + this.get('stationClassName'));
                     break;
             }
         });

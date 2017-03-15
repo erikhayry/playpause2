@@ -25,7 +25,6 @@ export default Ember.Component.extend({
     },
     actions: {
         tryAnotherCandidate: function(){
-            //this.pauseStation()
             console.log('tryAnotherCandidate', this.get('currentCandidateIndex'))
 
             let index = this.get('currentCandidateIndex') + 1;
@@ -43,6 +42,10 @@ export default Ember.Component.extend({
         },
         saveCandidate: function(candidate) {
             this.sendAction('saveCandidate', candidate.name, candidate.url, candidate.id, candidate.className, candidate.type)
+        },
+        toCandidateConfirm: function(candidate) {
+            this.set('confirmCandidate', candidate)
         }
+
     }
 });

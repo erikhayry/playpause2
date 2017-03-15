@@ -5,7 +5,11 @@
 </div>
 <div class="row">
     <div class="col">
-        {{play-guest guest-url=model.url guest-selector=model.selector class="text-center"}}
+        {{play-guest class="text-center"
+                stationUrl=model.url
+                stationIdName=model.idName
+                stationClassName=model.className
+        }}
     </div>
 </div>
 <div class="row">

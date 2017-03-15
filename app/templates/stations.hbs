@@ -1,13 +1,49 @@
 <div class="row">
-    <div class="col-sm-8">
-        <form class="form-inline">
-            {{input class="form-control" value=newStationName placeholder="Name"}}
-            {{input class="form-control" value=newStationUrl placeholder="url"}}
-            {{input class="form-control" value=newStationId placeholder="id"}}
-            {{input class="form-control" value=newStationclassName placeholder="className"}}
-            {{input class="form-control" value=newStationType placeholder="type"}}
-            <button class="btn btn-primary" {{action "addStation" newStationName newStationUrl newStationId newStationclassName newStationType}}>Add station</button>
-        </form>
+    <div class="col-sm-6">
+        <div class="form-group row">
+            <label for="example-text-input" class="col-2 col-form-label">Name</label>
+            <div class="col-10">
+                {{input class="form-control" value=newStationName placeholder="SR"}}
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="example-text-input" class="col-2 col-form-label">Url</label>
+            <div class="col-10">
+                {{input class="form-control" value=newStationUrl placeholder="http://sr.se"}}
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="example-text-input" class="col-2 col-form-label">ID</label>
+            <div class="col-10">
+                {{input class="form-control" value=newStationId placeholder="play"}}
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="example-text-input" class="col-2 col-form-label">Class Name</label>
+            <div class="col-10">
+                {{input class="form-control" value=newStationclassName placeholder="play-btn"}}
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="example-text-input" class="col-2 col-form-label">Type</label>
+            <div class="col-10">
+                {{input class="form-control" value=newStationclassName placeholder="AUDIO"}}
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="offset-sm-2 col-sm-10">
+                <button class="btn btn-primary btn-block" {{action "addStation" newStationName newStationUrl newStationId newStationclassName newStationType}}>Add station</button>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-sm-2 text-center">
+        or
     </div>
     <div class="col-sm-4">
         <div class="text-center">
@@ -20,6 +56,7 @@
 
 <br>
 
+<h2 class="text-center">Stations</h2>
 <ul class="list-group">
     {{#each model as |station|}}
         <li class="list-group-item">

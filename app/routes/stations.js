@@ -25,7 +25,7 @@ export default Ember.Route.extend({
             let station = this.store.createRecord('station', {
                 name: name,
                 url: url,
-                id: id,
+                idName: id,
                 className: className,
                 type: type
             });

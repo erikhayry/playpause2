@@ -11,8 +11,9 @@ export default Ember.Component.extend({
 
         ipcRenderer.on('playpause', () => {
             let candidate = this.get('candidate');
+            console.log('playpause', candidate);
             if(candidate){
-                webview.send("playpause", candidate.id);
+                webview.send("playpause", candidate.id, candidate.className);
             }
         });
 
@@ -78,6 +79,10 @@ export default Ember.Component.extend({
         },
         saveCandidate: function(name, url, id, className, type) {
             this.sendAction('saveCandidate', name, url, id, className, type)
+        },
+        candidateSelected: function(candidate){
+            console.log('candidateSelected', candidate);
+            this.set('candidate', candidate);
         }
     }
 });

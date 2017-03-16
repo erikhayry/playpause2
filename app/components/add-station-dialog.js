@@ -10,6 +10,8 @@ export default Ember.Component.extend({
 
         if(candidates && candidates.length > 0){
             this.set('candidate', candidates[index]);
+            this.sendAction('candidateSelected', this.get('candidate'));
+
             if(candidates[index + 1]){
                 this.set('nextCandidate', candidates[index + 1]);
             }
@@ -21,12 +23,15 @@ export default Ember.Component.extend({
     },
     actions: {
         tryAnotherCandidate: function(){
+            //TODO refactor. Service?
             console.log('tryAnotherCandidate', this.get('currentCandidateIndex'));
 
             let index = this.get('currentCandidateIndex') + 1;
             let candidates = this.get('candidates');
 
             this.set('candidate', candidates[index]);
+            this.sendAction('candidateSelected', this.get('candidate'));
+
             if(candidates[index + 1]){
                 this.set('nextCandidate', candidates[index + 1]);
             }

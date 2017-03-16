@@ -1,31 +1,38 @@
-{{#if confirmCandidate}}
-    <div class="row">
-        <div class="col-12">
-            <p>Save as:</p>
-            {{input class="form-control" value=confirmCandidate.name placeholder="SR"}}
-            <br>
-            <button class="btn btn-primary" {{action "saveCandidate" candidate}}>Save station</button>
+{{#if candidates.length}}
+    {{#if confirmCandidate}}
+        <div class="row">
+            <div class="col-12">
+                <p>Save as:</p>
+                {{input class="form-control" value=confirmCandidate.name placeholder="SR"}}
+                <br>
+                <button class="btn btn-primary" {{action "saveCandidate" confirmCandidate}}>Save station</button>
+            </div>
         </div>
-    </div>
-{{else if candidate}}
-    <h2>Audio element found</h2>
-    <p>Try it using your media buttons</p>
-    <p>Did it work as expected?</p>
+    {{else if candidate}}
+        <h2>Audio element found</h2>
+        <p>Try it using your media buttons</p>
+        <hr>
+        <p>Did it work as expected?</p>
 
-    <div class="row">
-        <div class="col-6">
-            <p>Yes</p>
-            <button class="btn btn-primary" {{action "toCandidateConfirm" candidate}}>Save station</button>
+        <div class="row text-center">
+            <div class="col-4">
+                <p>Yes</p>
+                <button class="btn btn-block btn-primary" {{action "toCandidateConfirm" candidate}}>Save station</button>
+            </div>
+            <div class="col-4">
+                {{#if nextCandidate}}
+                    <p>No</p>
+                    <button class="btn btn-block btn-primary" {{action "tryAnotherCandidate"}}>Try another</button>
+                {{else}}
+                    <p>No more elements found. Save station as mutable</p>
+                    <button class="btn btn-block btn-primary" {{action "toCandidateConfirm" candidate}}>Save station as mutable</button>
+                {{/if}}
+            </div>
+            <div class="col-4">
+                <p>&nbsp;</p>
+                <button class="btn btn-block btn-secondary" {{action "cancel"}}>Cancel</button>
+            </div>
         </div>
-        <div class="col-6">
-            {{#if nextCandidate}}
-                <p>No</p>
-                <button class="btn btn-primary" {{action "tryAnotherCandidate"}}>Try another</button>
-            {{else}}
-                <p>No more elements found. Save station as mutable</p>
-                <button class="btn btn-primary" {{action "toCandidateConfirm" candidate}}>Save station as mutable</button>
-            {{/if}}
-        </div>
-    </div>
+    {{/if}}
 {{/if}}
 

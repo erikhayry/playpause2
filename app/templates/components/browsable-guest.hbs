@@ -32,22 +32,24 @@
 
 <br>
 
-<webview
-        id="webview-guest"
-        src="{{guestUrl}}"
-        style="display:inline-flex; width:640px; height:480px"
-        preload="./assets/lib/guest.js"
->
-</webview>
+<div class="text-center">
+    <webview
+            id="webview-guest"
+            src="{{guestUrl}}"
+            style="display:inline-flex; width:640px; height:480px"
+            preload="./assets/lib/guest.js"
+    >
+    </webview>
+</div>
 
 <br>
 
 <div class="row">
-    <div class="col">
-        <button class="btn btn-primary" {{action "findCandidates" guestUrl}} disabled={{isLoading}}>Find Play Button</button>
+    <div class="offset-sm-8 col-sm-4">
+        <button class="btn btn-primary btn-block" {{action "findCandidates" guestUrl}} disabled={{disabled-with-or isLoading candidates.length}}>Find Play Button</button>
     </div>
 </div>
 
 <br>
 
-{{add-station-dialog candidates=candidates candidate=candidate saveCandidate="saveCandidate"}}
+{{add-station-dialog candidates=candidates saveCandidate="saveCandidate"}}

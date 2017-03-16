@@ -12,7 +12,7 @@ export default Ember.Component.extend({
         ipcRenderer.on('playpause', () => {
             let candidate = this.get('candidate');
             if(candidate){
-                webview.send("playpause", '#' + candidate.id);
+                webview.send("playpause", candidate.id);
             }
         });
 
@@ -42,7 +42,6 @@ export default Ember.Component.extend({
                         if(candidates.length > 1){
                             this.set('candidates', candidates)
                         }
-                        this.set('candidate', candidates[0])
                     }
                     break;
             }
@@ -60,6 +59,7 @@ export default Ember.Component.extend({
             console.log('did-navigate-in-page', event)
             this.set('browserUrl', event.url);
             this.set('isLoading', false);
+            this.set('candidates', []);
             this.sendAction('didNavigate', event.url)
         });
     },

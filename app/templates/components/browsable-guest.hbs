@@ -33,13 +33,10 @@
 <br>
 
 <div class="text-center">
-    <webview
-            id="webview-guest"
-            src="{{guestUrl}}"
-            style="display:inline-flex; width:640px; height:480px"
-            preload="./assets/lib/guest.js"
-    >
-    </webview>
+ {{ember-webview
+         onReady='onWebviewReady'
+         url=guestUrl
+ }}
 </div>
 
 <br>

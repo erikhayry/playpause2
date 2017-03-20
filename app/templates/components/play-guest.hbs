@@ -7,12 +7,7 @@
 </div>
 {{/if}}
 
-<webview
-        id="webview-guest"
-        src="{{stationUrl}}"
-        style="display:inline-flex;
-        width:640px;
-        height:480px"
-        preload="./assets/lib/guest.js"
->
-</webview>
+{{ember-webview
+        onReady='onWebviewReady'
+        url=stationUrl
+}}

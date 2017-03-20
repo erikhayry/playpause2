@@ -4,10 +4,10 @@ import config from '../config/environment';
 export default Ember.Component.extend({
     isLoading: true,
     browserUrl: 'http://sr.se',
-    didInsertElement() {
+    onWebviewReady: function(webview){
         const { ipcRenderer } = require('electron');
+        this.set('webview', webview);
 
-        let webview = this.set('webview', this.element.getElementsByTagName('webview')[0]);
 
         ipcRenderer.on('playpause', () => {
             let candidate = this.get('candidate');
@@ -64,8 +64,15 @@ export default Ember.Component.extend({
             this.sendAction('didNavigate', event.url)
         });
     },
+    didInsertElement() {
+
+    },
 
     actions: {
+        onWebviewReady: function(webview){
+            console.log('onWebviewReady', webview);
+            this.onWebviewReady(webview);
+        },
         loadUrl: function(url){
             console.log('loadUrl', url)
             this.set('guestUrl', url);

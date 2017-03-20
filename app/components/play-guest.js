@@ -2,9 +2,8 @@ import Ember from 'ember';
 import config from '../config/environment';
 
 export default Ember.Component.extend({
-    didInsertElement() {
+    onWebviewReady(webview) {
         const { ipcRenderer } = require('electron');
-        let webview = this.element.getElementsByTagName('webview')[0];
 
         ipcRenderer.on('playpause', () => {
             console.log(this.get('stationIdName'))
@@ -25,6 +24,9 @@ export default Ember.Component.extend({
         });
     },
     actions: {
+        onWebviewReady: function(webview){
+            this.onWebviewReady(webview)
+        },
         closeAlert: function () {
             this.set('error', '');
         }

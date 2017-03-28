@@ -9,7 +9,7 @@ const Router = Ember.Router.extend({
 Router.map(function() {
   this.route('station', { path: '/station/:id' });
   this.route('stations');
-  this.route('add-station');
+  this.route('add-scripted-station');
 });
 
 export default Router;

@@ -6,20 +6,28 @@ export default Ember.Component.extend({
         const { ipcRenderer } = require('electron');
 
         ipcRenderer.on('playpause', () => {
-            console.log(this.get('stationIdName'))
-            console.log(this.get('stationClassName'))
-            webview.send("playpause", this.get('stationIdName'), this.get('stationClassName'));
+            console.log(this.get('stationPlayPauseAction'))
+            webview.executeJavaScript(this.get('stationPlayPauseAction'));
         });
+
+        ipcRenderer.on('stop', () => {
+            console.log(this.get('stationStopAction'))
+            webview.executeJavaScript(this.get('stationStopAction'));
+        });
+
+        ipcRenderer.on('next', () => {
+            console.log(this.get('stationNextAction'))
+            webview.executeJavaScript(this.get('stationNextAction'));
+        });
+
+        ipcRenderer.on('previous', () => {
+            console.log(this.get('stationPreviousAction'))
+            webview.executeJavaScript(this.get('stationPreviousAction'));
+        });
+
         webview.addEventListener("dom-ready", () => {
             if(config.environment === 'development'){
                 webview.openDevTools();
-            }
-        });
-        webview.addEventListener('ipc-message', (event) => {
-            switch (event.channel) {
-                case 'playpausedfailed':
-                    this.set('error', 'Unable to find element with selector ' + this.get('stationIdName') + ' / ' + this.get('stationClassName'));
-                    break;
             }
         });
     },

@@ -39,18 +39,42 @@
  }}
 </div>
 
-<br>
-
-<div class="row">
-    <div class="offset-sm-8 col-sm-4">
-        <button class="btn btn-primary btn-block" {{action "findCandidates" guestUrl}} disabled={{disabled-with-or isLoading candidates.length}}>Find Play Button</button>
+<div class="form-group row">
+    <label for="example-text-input" class="col-2 col-form-label">Name</label>
+    <div class="col-10">
+        {{input class="form-control" value=newStationName placeholder="SR"}}
     </div>
 </div>
 
+<div class="form-group row">
+    <label for="example-text-input" class="col-2 col-form-label">Play/Pause Script</label>
+    <div class="col-4">
+        {{textarea class="form-control" value=playPauseActionScript placeholder="play pause script"}}
+    </div>
+
+    <label for="example-text-input" class="col-2 col-form-label">Stop Script</label>
+    <div class="col-4">
+        {{textarea class="form-control" value=stopActionScript placeholder="stop script"}}
+    </div>
+</div>
+
+<div class="form-group row">
+    <label for="example-text-input" class="col-2 col-form-label">Next Script</label>
+    <div class="col-4">
+        {{textarea class="form-control" value=nextActionScript placeholder="next script"}}
+    </div>
+
+    <label for="example-text-input" class="col-2 col-form-label">Previous Script</label>
+    <div class="col-4">
+        {{textarea class="form-control" value=previousActionScript placeholder="previous script"}}
+    </div>
+</div>
+
+
 <br>
 
-{{add-station-dialog
-        candidates=candidates
-        saveCandidate="saveCandidate"
-        candidateSelected="candidateSelected"
-}}
+<div class="form-group row">
+    <div class="offset-sm-2 col-sm-10">
+        <button class="btn btn-primary btn-block" {{action "saveCandidate" newStationName browserUrl playPauseActionScript stopActionScript nextActionScript previousActionScript}}>Save station</button>
+    </div>
+</div>

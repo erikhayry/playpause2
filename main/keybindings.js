@@ -6,6 +6,7 @@ class Keybindings {
         this.browserWindow = browserWindow;
         globalShortcut.register('medianexttrack', () => {
             console.log('main > keybindings > medianexttrack');
+            this.browserWindow.webContents.send('next');
         });
         globalShortcut.register('mediaplaypause', () => {
             console.log('main > keybindings > mediaplaypause');
@@ -13,9 +14,11 @@ class Keybindings {
         });
         globalShortcut.register('mediaprevioustrack', () => {
             console.log('main > keybindings > mediaprevioustrack');
+            this.browserWindow.webContents.send('previous');
         });
         globalShortcut.register('mediastop', () => {
             console.log('main > keybindings > mediastop');
+            this.browserWindow.webContents.send('stop');
         });
     }
 }

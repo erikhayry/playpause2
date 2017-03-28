@@ -10,9 +10,10 @@ export default Ember.Route.extend({
                 let station = store.createRecord('station', {
                     name: 'SR.se',
                     url: 'http://sr.se',
-                    id: undefined,
-                    className: 'player-play',
-                    type: 'BUTTON'
+                    playPauseAction: 'console.log("playPauseAction")',
+                    stopAction: 'console.log("stopAction")',
+                    nextAction: 'console.log("nextAction")',
+                    previousAction: 'console.log("previousAction")'
                 });
                 station.save();
             }
@@ -21,16 +22,6 @@ export default Ember.Route.extend({
     },
 
     actions: {
-        addStation: function(name, url, id, className, type) {
-            let station = this.store.createRecord('station', {
-                name: name,
-                url: url,
-                idName: id,
-                className: className,
-                type: type
-            });
-            station.save();
-        },
         removeStation: function(id){
             this.store.findRecord('station', id, { backgroundReload: false }).then(function(station) {
                 station.destroyRecord();

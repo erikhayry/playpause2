@@ -4,10 +4,15 @@ import config from '../config/environment';
 export default Ember.Component.extend({
     isLoading: true,
     browserUrl: 'http://sr.se',
+    didReceiveAttrs() {
+        this._super(...arguments);
+        let url = this.get('url');
+        if(url){
+            this.set('guestUrl', url);
+        }
+    },
     onWebviewReady: function(webview){
-        const { ipcRenderer } = require('electron');
         this.set('webview', webview);
-
 
         webview.addEventListener("dom-ready", () => {
             if(config.environment === 'development'){
@@ -20,7 +25,7 @@ export default Ember.Component.extend({
         });
 
         webview.addEventListener('did-navigate', (event) => {
-            console.log('did-navigate', event)
+            console.log('did-navigate', event, webview.getTitle())
         });
 
         webview.addEventListener('did-navigate-in-page', (event) => {
@@ -30,10 +35,6 @@ export default Ember.Component.extend({
             this.sendAction('didNavigate', event.url)
         });
     },
-    didInsertElement() {
-
-    },
-
     actions: {
         onWebviewReady: function(webview){
             console.log('onWebviewReady', webview);
@@ -46,8 +47,13 @@ export default Ember.Component.extend({
         closeAlert: function (alertName) {
             this.set(alertName, '');
         },
-        saveCandidate: function(name, url, playPauseActionScript, stopActionScript, nextActionScript, previousActionScript) {
-            this.sendAction('saveCandidate', name, url, playPauseActionScript, stopActionScript, nextActionScript, previousActionScript)
+        save: function(name, url, playPauseAction, stopAction, nextAction, previousAction) {
+            this.sendAction('save', name, url, playPauseAction, stopAction, nextAction, previousAction)
         },
+        update: function(value, type){
+            console.log('valueUpdated?')
+            console.log(value, type)
+            this.set(type, value);
+        }
     }
 });

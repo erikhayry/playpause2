@@ -1,0 +1,31 @@
+import Ember from 'ember';
+
+export default Ember.Controller.extend({
+    isLoading: true,
+    componentProperty: false,
+    actions: {
+        didNavigate: function(url){
+            console.log('didNavigate', url)
+            this.set('isLoading', false)
+        },
+        save: function(name, url, playPauseAction, stopAction, nextAction, previousAction) {
+            let store = this.get('store');
+            let that = this;
+
+            console.log('save', name, url, playPauseAction, stopAction, nextAction, previousAction);
+            console.log();
+
+            this.store.findRecord('station', this.get('model').id).then(function(station) {
+                station.set('name', name);
+                station.set('url', url);
+                station.set('playPauseAction', playPauseAction);
+                station.set('stopAction', stopAction);
+                station.set('nextAction', nextAction);
+                station.set('previousAction', previousAction);
+
+                station.save();
+                that.transitionToRoute('stations')
+            });
+        }
+    }
+});

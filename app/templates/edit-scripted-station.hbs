@@ -2,7 +2,13 @@
     <div class="col-sm-12">
         {{browsable-guest
                 didNavigate="didNavigate"
-                save="saveCandidate"
+                save="save"
+                name=model.name
+                url=model.url
+                playPauseAction=model.playPauseAction
+                stopAction=model.stopAction
+                nextAction=model.nextAction
+                previousAction=model.previousAction
         }}
     </div>
 </div>

@@ -8,17 +8,17 @@ export default Ember.Controller.extend({
             console.log('didNavigate', url)
             this.set('isLoading', false)
         },
-        saveCandidate: function(name, url, playPauseActionScript, stopActionScript, nextActionScript, previousActionScript) {
+        saveCandidate: function(name, url, playPauseAction, stopAction, nextAction, previousAction) {
             let store = this.get('store');
 
-            console.log('saveCandidate', name, url, playPauseActionScript, stopActionScript, nextActionScript, previousActionScript);
+            console.log('saveCandidate', name, url, playPauseAction, stopAction, nextAction, previousAction);
             let station = this.store.createRecord('station', {
                 name: name,
                 url: url,
-                playPauseAction: playPauseActionScript,
-                stopAction: stopActionScript,
-                nextAction: nextActionScript,
-                previousAction: previousActionScript
+                playPauseAction: playPauseAction,
+                stopAction: stopAction,
+                nextAction: nextAction,
+                previousAction: previousAction
             });
             station.save();
             this.transitionToRoute('stations');

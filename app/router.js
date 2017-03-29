@@ -10,6 +10,7 @@ Router.map(function() {
   this.route('station', { path: '/station/:id' });
   this.route('stations');
   this.route('add-scripted-station');
+  this.route('edit-scripted-station', { path: '/edit-scripted-station/:id' });
 });
 
 export default Router;

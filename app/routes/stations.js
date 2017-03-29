@@ -26,6 +26,9 @@ export default Ember.Route.extend({
             this.store.findRecord('station', id, { backgroundReload: false }).then(function(station) {
                 station.destroyRecord();
             });
+        },
+        goto: function(route, id){
+            this.transitionToRoute(route, id);
         }
     }
 });

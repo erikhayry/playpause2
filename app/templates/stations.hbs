@@ -14,13 +14,32 @@
 <ul class="list-group">
     {{#each model as |station|}}
         <li class="list-group-item">
-            <div class="d-flex w-100 justify-content-between">
-                {{#link-to "station" station.id}}{{station.name}}{{/link-to}}
-                <button class="btn btn-danger" {{action "removeStation" station.id}}>Remove</button>
+            <div class="row">
+                <div class="col-sm-6">
+                    {{#link-to "station" station.id}}{{station.name}}{{/link-to}}
+                </div>
+                <div class="col-sm-6">
+                    <div class="btn-group pull-right" role="group">
+                        {{#link-to "edit-scripted-station" station.id class="btn btn-default"}}Edit{{/link-to}}
+                        <button class="btn btn-danger" {{action "removeStation" station.id}}>Remove</button>
+                    </div>
+                </div>
             </div>
         </li>
     {{/each}}
 </ul>
 
+<br>
 
+<div class="row">
+    <div class="col-sm-12">
+        <div class="text-right">
+            {{#link-to "add-scripted-station" class="btn btn-primary"}}
+                Add Station
+            {{/link-to}}
+        </div>
+    </div>
+</div>
+
+<br>
 

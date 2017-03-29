@@ -10,10 +10,17 @@ module.exports = function(defaults) {
         exclude: ["assets/lib/**/*.js"]
       }
     },
+
     sassOptions: {
       includePaths: [
         'bower_components/bootstrap/scss'
       ]
+    },
+
+    'ember-bootstrap': {
+      'bootstrapVersion': 3,
+      'importBootstrapFont': true,
+      'importBootstrapCSS': false
     }
   });
 

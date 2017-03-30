@@ -5,15 +5,12 @@ export default Ember.Controller.extend({
     componentProperty: false,
     actions: {
         didNavigate: function(url){
-            console.log('didNavigate', url)
-            this.set('isLoading', false)
+            console.log('didNavigate', url);
+            this.set('isLoading', false);
         },
         save: function(name, url, playPauseAction, stopAction, nextAction, previousAction) {
-            let store = this.get('store');
-            let that = this;
-
             console.log('save', name, url, playPauseAction, stopAction, nextAction, previousAction);
-            console.log();
+            let that = this;
 
             this.store.findRecord('station', this.get('model').id).then(function(station) {
                 station.set('name', name);
@@ -24,7 +21,7 @@ export default Ember.Controller.extend({
                 station.set('previousAction', previousAction);
 
                 station.save();
-                that.transitionToRoute('stations')
+                that.transitionToRoute('stations');
             });
         }
     }

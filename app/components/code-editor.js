@@ -5,13 +5,13 @@ export default Ember.Component.extend({
         this._super(...arguments);
         let value = this.get('value');
         if(!value){
-            this.set('value', "Empty");
+            this.set('value', '');
         }
     },
     actions: {
         valueUpdated: function(value){
-            console.log(value, this.get('action'))
-            this.sendAction('update', value, this.get('action'))
+            console.log('valueUpdated', value, this.get('action'));
+            this.sendAction('update', value, this.get('action'));
         }
     }
 });

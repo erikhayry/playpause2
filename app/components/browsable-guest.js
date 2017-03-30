@@ -21,18 +21,18 @@ export default Ember.Component.extend({
         });
 
         webview.addEventListener('will-navigate', (event) => {
-            console.log('will-navigate', event)
+            console.log('will-navigate', event);
         });
 
         webview.addEventListener('did-navigate', (event) => {
-            console.log('did-navigate', event, webview.getTitle())
+            console.log('did-navigate', event, webview.getTitle());
         });
 
         webview.addEventListener('did-navigate-in-page', (event) => {
-            console.log('did-navigate-in-page', event)
+            console.log('did-navigate-in-page', event);
             this.set('browserUrl', event.url);
             this.set('isLoading', false);
-            this.sendAction('didNavigate', event.url)
+            this.sendAction('didNavigate', event.url);
         });
     },
     actions: {
@@ -41,18 +41,17 @@ export default Ember.Component.extend({
             this.onWebviewReady(webview);
         },
         loadUrl: function(url){
-            console.log('loadUrl', url)
+            console.log('loadUrl', url);
             this.set('guestUrl', url);
         },
         closeAlert: function (alertName) {
             this.set(alertName, '');
         },
         save: function(name, url, playPauseAction, stopAction, nextAction, previousAction) {
-            this.sendAction('save', name, url, playPauseAction, stopAction, nextAction, previousAction)
+            this.sendAction('save', name, url, playPauseAction, stopAction, nextAction, previousAction);
         },
         update: function(value, type){
-            console.log('valueUpdated?')
-            console.log(value, type)
+            console.log('update', value, type);
             this.set(type, value);
         }
     }

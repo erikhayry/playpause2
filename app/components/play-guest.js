@@ -6,22 +6,22 @@ export default Ember.Component.extend({
         const { ipcRenderer } = require('electron');
 
         ipcRenderer.on('playpause', () => {
-            console.log(this.get('stationPlayPauseAction'))
+            console.log(this.get('stationPlayPauseAction'));
             webview.executeJavaScript(this.get('stationPlayPauseAction'));
         });
 
         ipcRenderer.on('stop', () => {
-            console.log(this.get('stationStopAction'))
+            console.log(this.get('stationStopAction'));
             webview.executeJavaScript(this.get('stationStopAction'));
         });
 
         ipcRenderer.on('next', () => {
-            console.log(this.get('stationNextAction'))
+            console.log(this.get('stationNextAction'));
             webview.executeJavaScript(this.get('stationNextAction'));
         });
 
         ipcRenderer.on('previous', () => {
-            console.log(this.get('stationPreviousAction'))
+            console.log(this.get('stationPreviousAction'));
             webview.executeJavaScript(this.get('stationPreviousAction'));
         });
 
@@ -33,7 +33,7 @@ export default Ember.Component.extend({
     },
     actions: {
         onWebviewReady: function(webview){
-            this.onWebviewReady(webview)
+            this.onWebviewReady(webview);
         },
         closeAlert: function () {
             this.set('error', '');

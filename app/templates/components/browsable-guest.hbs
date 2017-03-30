@@ -17,18 +17,18 @@
 {{/if}}
 
 <div class="form-group row">
-    <div class="col-12">
+    <div class="col-sm-12">
         {{input class="form-control" value=name placeholder="SR"}}
     </div>
 </div>
 
 <div class="row">
-    <div class="col-8">
+    <div class="col-sm-8">
         <div class="text-left">
             {{input class="form-control" value=url placeholder="url"}}
         </div>
     </div>
-    <div class="col-4">
+    <div class="col-sm-4">
         <div class="text-left">
             <button class="btn btn-primary btn-block" {{action "loadUrl" url}}>Go</button>
         </div>
@@ -44,42 +44,66 @@
  }}
 </div>
 
+{{#bs-tab customTabs=true as |tab|}}
+    {{#bs-nav type="tabs" as |nav|}}
+        {{#nav.item active=(bs-eq tab.activeId "playPauseAction")}}
+            <a href="#playPauseAction" role="tab" {{action tab.select "playPauseAction"}}>
+                Play/Pause <span class="glyphicon glyphicon-ok-circle {{if playPauseAction "text-success" "text-danger"}}" aria-hidden="true"></span>
+            </a>
+        {{/nav.item}}
+        {{#nav.item active=(bs-eq tab.activeId "stopAction")}}
+            <a href="#stopAction" role="tab" {{action tab.select "stopAction"}}>
+                Stop <span class="glyphicon glyphicon-ok-circle {{if stopAction "text-success" "text-muted"}}" aria-hidden="true"></span>
+            </a>
+        {{/nav.item}}
+        {{#nav.item active=(bs-eq tab.activeId "nextAction")}}
+            <a href="#nextAction" role="tab" {{action tab.select "nextAction"}}>
+                Next <span class="glyphicon glyphicon-ok-circle {{if nextAction "text-success" "text-muted"}}" aria-hidden="true"></span>
+            </a>
+        {{/nav.item}}
+        {{#nav.item active=(bs-eq tab.activeId "previousAction")}}
+            <a href="#previousAction" role="tab" {{action tab.select "previousAction"}}>
+                Previous <span class="glyphicon glyphicon-ok-circle {{if previousAction "text-success" "text-muted"}}" aria-hidden="true"></span>
+            </a>
+        {{/nav.item}}
+    {{/bs-nav}}
 
-{{#bs-tab as |tab|}}
-    {{#tab.pane title="Play/Pause"}}
-        {{code-editor
-                value=playPauseAction
-                action="playPauseAction"
-                update="update"
-        }}
-    {{/tab.pane}}
-    {{#tab.pane title="Stop"}}
-        {{code-editor
-                value=stopAction
-                action="stopAction"
-                update="update"
-        }}
-    {{/tab.pane}}
-    {{#tab.pane title="Next"}}
-        {{code-editor
-                value=nextAction
-                action="nextAction"
-                update="update"
-        }}
-    {{/tab.pane}}
-    {{#tab.pane title="Previous"}}
-        {{code-editor
-                value=previousAction
-                action="previousAction"
-                update="update"
-        }}
-    {{/tab.pane}}
+    <div class="tab-content">
+        {{#tab.pane elementId="playPauseAction" title="Tab 1"}}
+            {{code-editor
+                    value=playPauseAction
+                    action="playPauseAction"
+                    update="update"
+            }}
+        {{/tab.pane}}
+        {{#tab.pane elementId="stopAction" title="Stop"}}
+            {{code-editor
+                    value=stopAction
+                    action="stopAction"
+                    update="update"
+            }}
+        {{/tab.pane}}
+        {{#tab.pane elementId="nextAction" title="Next"}}
+            {{code-editor
+                    value=nextAction
+                    action="nextAction"
+                    update="update"
+            }}
+        {{/tab.pane}}
+        {{#tab.pane elementId="previousAction" title="Previous"}}
+            {{code-editor
+                    value=previousAction
+                    action="previousAction"
+                    update="update"
+            }}
+        {{/tab.pane}}
+    </div>
 {{/bs-tab}}
 
 <br>
 
 <div class="form-group row">
-    <div class="offset-sm-2 col-sm-10">
+    <div class="col-sm-12">
         <button class="btn btn-primary btn-block" {{action "save" name url playPauseAction stopAction nextAction previousAction}}>Save station</button>
     </div>
 </div>

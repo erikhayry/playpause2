@@ -4,8 +4,8 @@ export default Ember.Controller.extend({
     isLoading: true,
     componentProperty: false,
     actions: {
-        didNavigate(url){
-            console.log('didNavigate', url);
+        didNavigate(url, title){
+            console.log('didNavigate', url, title);
             this.set('isLoading', false);
         },
         saveCandidate(name, url, playPauseAction, stopAction, nextAction, previousAction) {

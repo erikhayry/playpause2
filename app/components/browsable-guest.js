@@ -3,8 +3,9 @@ import config from '../config/environment';
 
 export default Ember.Component.extend({
     isLoading: true,
-    browserUrl: 'http://sr.se',
+    placeholder: 'name',
     didReceiveAttrs() {
+        console.log('didReceiveAttrs', this.get('url'))
         this._super(...arguments);
         let url = this.get('url');
         if(url){
@@ -29,10 +30,11 @@ export default Ember.Component.extend({
         });
 
         webview.addEventListener('did-navigate-in-page', (event) => {
-            console.log('did-navigate-in-page', event);
-            this.set('browserUrl', event.url);
+            console.log('did-navigate-in-page', event, webview.getTitle());
+            this.set('url', event.url);
+            this.set('placeholder', webview.getTitle());
             this.set('isLoading', false);
-            this.sendAction('didNavigate', event.url);
+            this.sendAction('didNavigate', event.url, webview.getTitle());
         });
     },
     actions: {
@@ -48,7 +50,7 @@ export default Ember.Component.extend({
             this.set(alertName, '');
         },
         save(name, url, playPauseAction, stopAction, nextAction, previousAction) {
-            this.sendAction('save', name, url, playPauseAction, stopAction, nextAction, previousAction);
+            this.sendAction('save', name || this.get('placeholder'), url, playPauseAction, stopAction, nextAction, previousAction);
         },
         update(value, type){
             console.log('update', value, type);

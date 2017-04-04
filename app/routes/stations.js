@@ -1,10 +1,10 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-    model: function() {
+    model() {
         let store = this.get('store');
 
-        return store.findAll('station').then(function(data){
+        return store.findAll('station').then((data) => {
             //TODO only add once and mve to service?
             if(data.content.length === 0){
                 let station = store.createRecord('station', {
@@ -23,7 +23,7 @@ export default Ember.Route.extend({
 
     actions: {
         removeStation: function(id){
-            this.store.findRecord('station', id, { backgroundReload: false }).then(function(station) {
+            this.store.findRecord('station', id, { backgroundReload: false }).then((station) => {
                 station.destroyRecord();
             });
         },

@@ -11,7 +11,7 @@ export default Ember.Component.extend({
             this.set('guestUrl', url);
         }
     },
-    onWebviewReady: function(webview){
+    onWebviewReady(webview){
         this.set('webview', webview);
 
         webview.addEventListener("dom-ready", () => {
@@ -36,21 +36,21 @@ export default Ember.Component.extend({
         });
     },
     actions: {
-        onWebviewReady: function(webview){
+        onWebviewReady(webview){
             console.log('onWebviewReady', webview);
             this.onWebviewReady(webview);
         },
-        loadUrl: function(url){
+        loadUrl(url){
             console.log('loadUrl', url);
             this.set('guestUrl', url);
         },
-        closeAlert: function (alertName) {
+        closeAlert(alertName) {
             this.set(alertName, '');
         },
-        save: function(name, url, playPauseAction, stopAction, nextAction, previousAction) {
+        save(name, url, playPauseAction, stopAction, nextAction, previousAction) {
             this.sendAction('save', name, url, playPauseAction, stopAction, nextAction, previousAction);
         },
-        update: function(value, type){
+        update(value, type){
             console.log('update', value, type);
             this.set(type, value);
         }

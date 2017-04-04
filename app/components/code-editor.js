@@ -9,7 +9,7 @@ export default Ember.Component.extend({
         }
     },
     actions: {
-        valueUpdated: function(value){
+        valueUpdated(value){
             console.log('valueUpdated', value, this.get('action'));
             this.sendAction('update', value, this.get('action'));
         }

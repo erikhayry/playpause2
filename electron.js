@@ -10,10 +10,10 @@ const emberAppLocation     = `file://${dirname}/dist/index.html`;
 
 const settings = require('./main/settings');
 const keybindings = require('./main/keybindings');
-const plugins = require('./main/plugins');
 
 //Init
-plugins.init(app);
+require('./main/plugins');
+require('./main/menus');
 
 let mainWindow = null;
 

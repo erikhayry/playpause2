@@ -4,11 +4,11 @@ export default Ember.Controller.extend({
     isLoading: true,
     componentProperty: false,
     actions: {
-        didNavigate: function(url){
+        didNavigate(url){
             console.log('didNavigate', url);
             this.set('isLoading', false);
         },
-        saveCandidate: function(name, url, playPauseAction, stopAction, nextAction, previousAction) {
+        saveCandidate(name, url, playPauseAction, stopAction, nextAction, previousAction) {
             console.log('saveCandidate', name, url, playPauseAction, stopAction, nextAction, previousAction);
             let station = this.store.createRecord('station', {
                 name: name,

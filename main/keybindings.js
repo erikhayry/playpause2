@@ -1,6 +1,6 @@
-/// <reference path="../node_modules/@types/electron/index.d.ts" />
-"use strict";
 const { globalShortcut } = require('electron');
+
+//TODO not as class. Use global BrowserWindow
 class Keybindings {
     constructor(browserWindow) {
         this.browserWindow = browserWindow;
@@ -22,4 +22,5 @@ class Keybindings {
         });
     }
 }
+
 module.exports = Keybindings;

@@ -32,10 +32,10 @@ export default Ember.Component.extend({
         });
     },
     actions: {
-        onWebviewReady: function(webview){
+        onWebviewReady(webview){
             this.onWebviewReady(webview);
         },
-        closeAlert: function () {
+        closeAlert() {
             this.set('error', '');
         }
     }

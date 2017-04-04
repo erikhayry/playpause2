@@ -50,8 +50,7 @@
     "ember-resolver": "^2.0.3",
     "ember-source": "^2.11.0",
     "ember-welcome-page": "^2.0.2",
-    "loader.js": "^4.0.10",
-    "typings": "^2.1.0"
+    "loader.js": "^4.0.10"
   },
   "engines": {
     "node": ">= 0.12.0"
@@ -111,9 +110,6 @@
     }
   },
   "dependencies": {
-    "@types/electron": "^1.4.31",
-    "@types/ember": "^2.7.36",
-    "@types/node": "^7.0.4",
     "electron-safe-ipc": "^0.6.1",
     "ember-cli-sass": "^6.1.1"
   }

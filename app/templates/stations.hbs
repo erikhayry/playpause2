@@ -1,4 +1,13 @@
 <h2 class="text-center">Stations</h2>
+
+{{#unless model}}
+    <p class="text-center">
+        No stations found.
+        <button class="btn btn-primary" {{action "loadSampleStations" station.id}}>Load example stations</button> ?
+    </p>
+{{/unless}}
+
+
 <ul class="list-group">
     {{#each model as |station|}}
         <li class="list-group-item">

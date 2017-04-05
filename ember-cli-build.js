@@ -22,6 +22,12 @@ module.exports = function(defaults) {
       'bootstrapVersion': 3,
       'importBootstrapFont': true,
       'importBootstrapCSS': false
+    },
+
+      //TODO fix missing workers
+    ace: {
+        themes: ['twilight'],
+        modes: ['javascript']
     }
   });
 

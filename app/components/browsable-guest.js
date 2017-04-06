@@ -55,6 +55,9 @@ export default Ember.Component.extend({
         update(value, type){
             console.log('update', value, type);
             this.set(type, value);
+        },
+        openDevTools(){
+            this.get('webview').openDevTools()
         }
     }
 });

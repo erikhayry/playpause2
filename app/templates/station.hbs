@@ -1,34 +1,36 @@
-<div class="row">
-    <div class="col-sm-12">
-        <h2 class="text-center">
+<div class="l-station">
+    <div class="l-station-header">
+        <h1>
             {{model.name}}
             <span class="glyphicon glyphicon-backward {{if model.previousAction "" "text-muted"}}" aria-hidden="true"></span>
             <span class="glyphicon glyphicon-play {{if model.playPauseAction "" "text-muted"}}" aria-hidden="true"></span>
             <span class="glyphicon glyphicon-pause {{if model.playPauseAction "" "text-muted"}}" aria-hidden="true"></span>
             <span class="glyphicon glyphicon-stop {{if model.stopAction "" "text-muted"}}" aria-hidden="true"></span>
             <span class="glyphicon glyphicon-forward {{if model.nextAction "" "text-muted"}}" aria-hidden="true"></span>
-        </h2>
+        </h1>
     </div>
-</div>
-<div class="row">
-    <div class="col-sm-12">
+
+    <div class="l-station-body">
         {{play-guest class="text-center"
-                stationUrl=model.url
-                stationPlayPauseAction=model.playPauseAction
-                stationStopAction=model.stopAction
-                stationNextAction=model.nextAction
-                stationPreviousAction=model.previousAction
+                     stationUrl=model.url
+                     stationPlayPauseAction=model.playPauseAction
+                     stationStopAction=model.stopAction
+                     stationNextAction=model.nextAction
+                     stationPreviousAction=model.previousAction
         }}
     </div>
-</div>
-<div class="row">
-    <div class="col-sm-6">
-        {{#link-to "stations" class="btn btn-default"}}
-            Back
-        {{/link-to}}
-    </div>
-    <div class="col-sm-6 text-right">
-        {{#link-to "edit-scripted-station" model.id class="btn btn-default"}}Edit{{/link-to}}
-        <button class="btn btn-danger" {{action "removeStation" model.id}}>Remove</button>
+
+    <div class="l-station-footer">
+        <div class="row">
+            <div class="col-sm-6">
+                {{#link-to "stations" class="btn btn-default"}}
+                    Back
+                {{/link-to}}
+            </div>
+            <div class="col-sm-6 text-right">
+                {{#link-to "edit-scripted-station" model.id class="btn btn-default"}}Edit{{/link-to}}
+                <button class="btn btn-danger" {{action "removeStation" model.id}}>Remove</button>
+            </div>
+        </div>
     </div>
 </div>

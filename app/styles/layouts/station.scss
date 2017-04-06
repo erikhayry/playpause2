@@ -1,0 +1,14 @@
+.l-station {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+}
+.l-station-header {
+}
+.l-station-body {
+  flex: 2 ;
+  overflow: auto;
+}
+.l-station-footer {
+  padding: $padding-base-vertical 0;
+}

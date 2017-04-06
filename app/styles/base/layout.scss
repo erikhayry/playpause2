@@ -1,0 +1,9 @@
+html, body {
+  height: 100%;
+}
+
+/*TODO rename*/
+.ember-view, .fill-height {
+  min-height: 100%;
+  height: 100%;
+}

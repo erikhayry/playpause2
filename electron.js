@@ -15,6 +15,7 @@ const keybindings = require('./main/keybindings');
 require('./main/plugins');
 require('./main/menus');
 
+let willQuitApp = false;
 let mainWindow = null;
 
 // Uncomment the lines below to enable Electron's crash reporter
@@ -35,7 +36,13 @@ app.on('window-all-closed', function onWindowAllClosed() {
 
 app.on('ready', function onReady() {
     mainWindow = new BrowserWindow(settings.browserWindow);
+    mainWindow.once('ready-to-show', () => {
+        mainWindow.show();
+        mainWindow.maximize()
+    });
+
     new keybindings(mainWindow);
+
     if(process.env.EMBER_ENV === 'development'){
         mainWindow.openDevTools();
     }
@@ -72,6 +79,17 @@ app.on('ready', function onReady() {
         console.log('The main window has become responsive again.');
     });
 
+    mainWindow.on('close', (e) => {
+        if (willQuitApp) {
+            /* the user tried to quit the app */
+            mainWindow = null;
+        } else {
+            /* the user only tried to close the mainWindow */
+            e.preventDefault();
+            mainWindow.hide();
+        }
+    });
+
     mainWindow.on('closed', () => {
         mainWindow = null;
     });
@@ -97,3 +115,10 @@ app.on('ready', function onReady() {
         console.log(`Exception: ${err}`);
     });
 });
+
+/* 'activate' is emitted when the user clicks the Dock icon (OS X) */
+app.on('activate', () => mainWindow.show());
+
+/* 'before-quit' is emitted when Electron receives
+ * the signal to exit and wants to start closing windows */
+app.on('before-quit', () => willQuitApp = true);

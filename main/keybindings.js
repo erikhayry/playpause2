@@ -3,6 +3,9 @@ const { globalShortcut } = require('electron');
 //TODO not as class. Use global BrowserWindow
 class Keybindings {
     constructor(browserWindow) {
+        /*
+            Media Keys
+         */
         this.browserWindow = browserWindow;
         globalShortcut.register('medianexttrack', () => {
             console.log('main > keybindings > medianexttrack');
@@ -20,6 +23,22 @@ class Keybindings {
             console.log('main > keybindings > mediastop');
             this.browserWindow.webContents.send('stop');
         });
+
+        /*
+            Shortcuts not in menu
+         */
+        globalShortcut.register('CommandOrControl+W', () => {
+            browserWindow.hide()
+        })
+
+        //TODO only in dev
+        globalShortcut.register('CommandOrControl+I+O', () => {
+            browserWindow.openDevTools()
+        })
+
+        globalShortcut.register('Alt+CommandOrControl+I', () => {
+            this.browserWindow.webContents.send('openDevTools');
+        })
     }
 }
 

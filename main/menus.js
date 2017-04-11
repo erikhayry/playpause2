@@ -31,6 +31,12 @@ let template = [{
         label: 'Select All',
         accelerator: 'CmdOrCtrl+A',
         role: 'selectall'
+    }, {
+        type: 'separator'
+    },{
+        label: 'Quit',
+        accelerator: 'CmdOrCtrl+Q',
+        role: 'quit'
     }]
 }];
 

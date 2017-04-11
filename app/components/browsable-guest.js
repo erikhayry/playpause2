@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import config from '../config/environment';
 
 export default Ember.Component.extend({
     isLoading: true,
@@ -13,12 +12,12 @@ export default Ember.Component.extend({
         }
     },
     onWebviewReady(webview){
+        const { ipcRenderer } = require('electron');
         this.set('webview', webview);
 
-        webview.addEventListener("dom-ready", () => {
-            if(config.environment === 'development'){
-                webview.openDevTools();
-            }
+        ipcRenderer.on('openDevTools', () => {
+            console.log(this.get('openDevToolsAction'));
+            webview.openDevTools();
         });
 
         webview.addEventListener('will-navigate', (event) => {

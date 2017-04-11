@@ -1,7 +1,7 @@
 .l-browsable-guest{
-/*  display: flex;
+  display: flex;
   flex-flow: column;
-  height: 100%;*/
+  height: 100%;
 }
 
 .l-browsable-guest-alerts{
@@ -20,6 +20,11 @@
 .l-browsable-guest-ide{
   flex: 2 ;
   overflow: auto;
+
+  .ember-view{
+    height: auto;
+    min-height: 0;
+  }
 }
 
 .l-browsable-guest-footer{

@@ -42,11 +42,7 @@ app.on('ready', function onReady() {
     });
 
     new keybindings(mainWindow);
-
-    if(process.env.EMBER_ENV === 'development'){
-        mainWindow.openDevTools();
-    }
-
+    
     delete mainWindow.module;
 
     // If you want to open up dev tools programmatically, call

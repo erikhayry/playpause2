@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import config from '../config/environment';
 
 export default Ember.Component.extend({
     onWebviewReady(webview) {
@@ -25,10 +24,9 @@ export default Ember.Component.extend({
             webview.executeJavaScript(this.get('stationPreviousAction'));
         });
 
-        webview.addEventListener("dom-ready", () => {
-            if(config.environment === 'development'){
-                webview.openDevTools();
-            }
+        ipcRenderer.on('openDevTools', () => {
+            console.log(this.get('openDevToolsAction'));
+            webview.openDevTools();
         });
     },
     actions: {

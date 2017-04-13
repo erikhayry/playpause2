@@ -4,7 +4,7 @@ export default Ember.Component.extend({
     isLoading: true,
     placeholder: 'name',
     didReceiveAttrs() {
-        console.log('didReceiveAttrs', this.get('url'))
+        console.log('didReceiveAttrs', this.get('url'));
         this._super(...arguments);
         let url = this.get('url');
         if(url){
@@ -56,7 +56,7 @@ export default Ember.Component.extend({
             this.set(type, value);
         },
         openDevTools(){
-            this.get('webview').openDevTools()
+            this.get('webview').openDevTools();
         }
     }
 });

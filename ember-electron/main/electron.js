@@ -6,14 +6,14 @@ const path                 = require('path');
 const app                  = electron.app;
 const BrowserWindow        = electron.BrowserWindow;
 const dirname              = __dirname || path.resolve(path.dirname());
-const emberAppLocation     = `file://${dirname}/dist/index.html`;
+const emberAppLocation     = `file://${dirname}/../../ember/index.html`;
 
-const settings = require('./main/settings');
-const keybindings = require('./main/keybindings');
+const settings = require('./settings');
+const keybindings = require('./keybindings');
 
 //Init
-require('./main/plugins');
-require('./main/menus');
+require('./plugins');
+require('./menus');
 
 let willQuitApp = false;
 let mainWindow = null;

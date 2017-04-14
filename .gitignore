@@ -20,3 +20,4 @@ testem.log
 # ts
 #/app/routes/**/*.js.idea
 /electron-builds
+/electron-out

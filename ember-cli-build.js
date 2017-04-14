@@ -53,10 +53,10 @@ module.exports = function(defaults) {
   });
 
   //TODO cleanup
-  let plugins = new Funnel('main/plugins', {
+  let plugins = new Funnel('ember-electron/main/plugins', {
       srcDir: '/',
       include: ['**/*'],
-      destDir: '/main/plugins'
+      destDir: '/ember-electron/main/plugins'
   });
 
   // Providing additional trees to the `toTree` method will result in those

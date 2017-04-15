@@ -1,3 +1,4 @@
+const localshortcut = require('electron-localshortcut');
 const { globalShortcut } = require('electron');
 
 //TODO not as class. Use global BrowserWindow
@@ -27,16 +28,16 @@ class Keybindings {
         /*
             Shortcuts not in menu
          */
-        globalShortcut.register('CommandOrControl+W', () => {
-            browserWindow.hide()
-        })
+        localshortcut.register(browserWindow, 'CommandOrControl+W', () => {
+                browserWindow.hide()
+        });
 
         //TODO only in dev
-        globalShortcut.register('CommandOrControl+I+O', () => {
+        localshortcut.register(browserWindow, 'CommandOrControl+I+O', () => {
             browserWindow.openDevTools()
-        })
+        });
 
-        globalShortcut.register('Alt+CommandOrControl+I', () => {
+        localshortcut.register(browserWindow, 'Alt+CommandOrControl+I', () => {
             this.browserWindow.webContents.send('openDevTools');
         })
     }

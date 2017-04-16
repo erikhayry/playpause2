@@ -1,13 +1,14 @@
 <div class="l-station">
-    <div class="l-station-header">
+    <div class="l-station-header text-center">
         <h1>
             {{model.name}}
-            <span class="glyphicon glyphicon-backward {{if model.previousAction "" "text-muted"}}" aria-hidden="true"></span>
-            <span class="glyphicon glyphicon-play {{if model.playPauseAction "" "text-muted"}}" aria-hidden="true"></span>
-            <span class="glyphicon glyphicon-pause {{if model.playPauseAction "" "text-muted"}}" aria-hidden="true"></span>
-            <span class="glyphicon glyphicon-stop {{if model.stopAction "" "text-muted"}}" aria-hidden="true"></span>
-            <span class="glyphicon glyphicon-forward {{if model.nextAction "" "text-muted"}}" aria-hidden="true"></span>
         </h1>
+        <div class="text-uppercase">
+            <span class="{{if model.previousAction "" "text-muted"}}" aria-hidden="true">Previous</span>
+            <span class="{{if model.playPauseAction "" "text-muted"}}" aria-hidden="true">Play/Pause</span>
+            <span class="{{if model.stopAction "" "text-muted"}}" aria-hidden="true">Stop</span>
+            <span class="{{if model.nextAction "" "text-muted"}}" aria-hidden="true">Next</span>
+        </div>
     </div>
 
     <div class="l-station-body">

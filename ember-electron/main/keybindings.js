@@ -33,7 +33,7 @@ class Keybindings {
         });
 
         //TODO only in dev
-        localshortcut.register(browserWindow, 'CommandOrControl+I+O', () => {
+        localshortcut.register(browserWindow, 'CommandOrControl+I', () => {
             browserWindow.openDevTools()
         });
 

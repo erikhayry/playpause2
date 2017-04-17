@@ -12,11 +12,13 @@ module.exports = function(defaults) {
       }
     },
 
+/*
     sassOptions: {
       includePaths: [
         'bower_components/bootstrap/scss'
       ]
     },
+*/
 
     'ember-bootstrap': {
       'bootstrapVersion': 3,
@@ -46,12 +48,6 @@ module.exports = function(defaults) {
 
 // Copy only the relevant files. For example the WOFF-files and stylesheets for a webfont:
 
-  let extraAssets = new Funnel('vendor/guest/lib', {
-    srcDir: '/',
-    include: ['**/*.js'],
-    destDir: '/assets/lib'
-  });
-
   //TODO cleanup
   let plugins = new Funnel('ember-electron/main/plugins', {
       srcDir: '/',
@@ -62,7 +58,7 @@ module.exports = function(defaults) {
   // Providing additional trees to the `toTree` method will result in those
   // trees being merged in the final output.
 
-  return app.toTree(new MergeTrees([extraAssets, plugins], {
+  return app.toTree(new MergeTrees([plugins], {
     overwrite: true
   }));
 };

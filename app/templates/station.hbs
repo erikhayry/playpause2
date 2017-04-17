@@ -4,10 +4,10 @@
             {{model.name}}
         </h1>
         <div class="text-uppercase">
-            <span class="{{if model.previousAction "" "text-muted"}}" aria-hidden="true">Previous</span>
-            <span class="{{if model.playPauseAction "" "text-muted"}}" aria-hidden="true">Play/Pause</span>
-            <span class="{{if model.stopAction "" "text-muted"}}" aria-hidden="true">Stop</span>
-            <span class="{{if model.nextAction "" "text-muted"}}" aria-hidden="true">Next</span>
+            <span class="{{if model.previousAction "" "text-muted"}} {{if previousActionActive "text-info" ""}}">Previous</span>
+            <span class="{{if model.playPauseAction "" "text-muted"}} {{if playPauseActionActive "text-info" ""}}">Play/Pause</span>
+            <span class="{{if model.stopAction "" "text-muted"}} {{if stopActionActive "text-info" ""}}">Stop</span>
+            <span class="{{if model.nextAction "" "text-muted"}} {{if nextActionActive "text-info" ""}}">Next</span>
         </div>
     </div>
 
@@ -18,6 +18,7 @@
                      stationStopAction=model.stopAction
                      stationNextAction=model.nextAction
                      stationPreviousAction=model.previousAction
+                     activeAction="activeAction"
         }}
     </div>
 
